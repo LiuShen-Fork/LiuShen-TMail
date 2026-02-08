@@ -14,6 +14,9 @@ import { generateAvatarUrl } from "./avatar"
 import { getUserId } from "./apiKey"
 import { verifyTurnstileToken } from "./turnstile"
 
+const casdoorIssuer = process.env.AUTH_CUSTOM_ISSUER
+const casdoorWellKnown = casdoorIssuer?.includes("/.well-known/") ? casdoorIssuer : undefined
+
 const ROLE_DESCRIPTIONS: Record<Role, string> = {
   [ROLES.EMPEROR]: "皇帝（网站所有者）",
   [ROLES.DUKE]: "公爵（超级用户）",
@@ -110,6 +113,27 @@ export const {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
       allowDangerousEmailAccountLinking: true,
     }),
+    {
+      id: "casdoor",
+      name: "Casdoor",
+      type: "oidc",
+      clientId: process.env.AUTH_CUSTOM_ID,
+      clientSecret: process.env.AUTH_CUSTOM_SECRET,
+      issuer: casdoorWellKnown ? undefined : casdoorIssuer,
+      wellKnown: casdoorWellKnown,
+      profile(profile: Record<string, unknown>) {
+        const rawProfile = profile as Record<string, unknown>
+        const subject = rawProfile.sub || rawProfile.id
+        const preferredUsername = rawProfile.preferred_username || rawProfile.name || rawProfile.email
+        return {
+          id: String(subject),
+          name: typeof rawProfile.name === "string" ? rawProfile.name : undefined,
+          email: typeof rawProfile.email === "string" ? rawProfile.email : undefined,
+          image: typeof rawProfile.picture === "string" ? rawProfile.picture : undefined,
+          username: typeof preferredUsername === "string" ? preferredUsername : undefined,
+        }
+      },
+    },
     CredentialsProvider({
       name: "Credentials",
       credentials: {

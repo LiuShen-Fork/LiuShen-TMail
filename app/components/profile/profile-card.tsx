@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from "next-intl"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { signOut } from "next-auth/react"
-import { Github, Settings, Crown, Sword, User2, Gem, Mail } from "lucide-react"
+import { Github, Settings, Crown, Sword, User2, Gem, Mail, Shield } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { WebhookConfig } from "./webhook-config"
 import { PromotePanel } from "./promote-panel"
@@ -55,6 +55,11 @@ const providerConfigs = {
     label: "GitHub",
     className: "text-primary bg-primary/10",
     icon: Github,
+  },
+  casdoor: {
+    label: "Casdoor",
+    className: "text-sky-600 bg-sky-600/10",
+    icon: Shield,
   },
 } as const
 

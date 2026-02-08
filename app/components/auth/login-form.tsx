@@ -204,6 +204,10 @@ export function LoginForm({ turnstile }: LoginFormProps) {
     signIn("google", { callbackUrl: "/" })
   }
 
+  const handleCasdoorLogin = () => {
+    signIn("casdoor", { callbackUrl: "/" })
+  }
+
   return (
     <Card className="w-[95%] max-w-lg border-2 border-primary/20">
       <CardHeader className="space-y-2">
@@ -326,6 +330,15 @@ export function LoginForm({ turnstile }: LoginFormProps) {
                     />
                   </svg>
                   {t("actions.googleLogin")}
+                </Button>
+
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={handleCasdoorLogin}
+                >
+                  <KeyRound className="mr-2 h-4 w-4" />
+                  {t("actions.casdoorLogin")}
                 </Button>
               </div>
             </TabsContent>
