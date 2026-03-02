@@ -61,8 +61,6 @@ const settingService = {
 		setting.casdoorEndpoint = c.env.casdoor_endpoint;
 		setting.casdoorClientId = c.env.casdoor_client_id;
 		setting.casdoorCallbackUrl = c.env.casdoor_callback_url;
-		setting.casdoorOrgName = c.env.casdoor_org_name;
-		setting.casdoorAppName = c.env.casdoor_app_name;
 		setting.casdoorSwitch = casdoorSwitch;
 
 		setting.emailPrefixFilter = setting.emailPrefixFilter.split(",").filter(Boolean);
@@ -207,8 +205,6 @@ const settingService = {
 			casdoorEndpoint: settingRow.casdoorEndpoint,
 			casdoorClientId: settingRow.casdoorClientId,
 			casdoorCallbackUrl: settingRow.casdoorCallbackUrl,
-			casdoorOrgName: settingRow.casdoorOrgName,
-			casdoorAppName: settingRow.casdoorAppName,
 			casdoorSwitch: settingRow.casdoorSwitch,
 			minEmailPrefix: settingRow.minEmailPrefix
 		};

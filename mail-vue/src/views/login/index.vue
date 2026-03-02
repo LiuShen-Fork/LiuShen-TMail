@@ -254,8 +254,6 @@ function casdoorLogin() {
   const endpoint = settingStore.settings.casdoorEndpoint
   const clientId = settingStore.settings.casdoorClientId
   const redirectUri = encodeURIComponent(settingStore.settings.casdoorCallbackUrl)
-  const orgName = settingStore.settings.casdoorOrgName
-  const appName = settingStore.settings.casdoorAppName
   window.location.href =
       `${endpoint}/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid+profile+email&state=casdoor`
 }
