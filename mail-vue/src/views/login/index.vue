@@ -8,11 +8,44 @@
       <div class="x5 cloud"></div>
     </div>
     <div v-else :style="background"></div>
+    <div class="left-panel">
+      <div class="left-content">
+        <div class="brand">
+          <Icon icon="fluent-emoji:leaf-fluttering-in-wind" width="36" height="36" />
+          <h1 class="brand-name">LiuShen TMail</h1>
+        </div>
+        <p class="tagline">清羽飞扬の临时邮箱</p>
+        <p class="description">一个轻量、安全、现代化的临时邮箱服务，基于 Cloudflare Serverless 架构，为你提供便捷的邮件收发体验。</p>
+        <div class="features">
+          <div class="feature-item">
+            <Icon icon="mingcute:shield-check-line" width="20" height="20" />
+            <span>隐私保护，临时邮箱按需使用</span>
+          </div>
+          <div class="feature-item">
+            <Icon icon="mingcute:rocket-line" width="20" height="20" />
+            <span>Serverless 部署，全球边缘加速</span>
+          </div>
+          <div class="feature-item">
+            <Icon icon="mingcute:mail-send-line" width="20" height="20" />
+            <span>支持收发邮件与附件管理</span>
+          </div>
+          <div class="feature-item">
+            <Icon icon="mingcute:moon-stars-line" width="20" height="20" />
+            <span>深色模式，舒适的阅读体验</span>
+          </div>
+        </div>
+        <div class="tech-badges">
+          <span class="badge">Cloudflare Workers</span>
+          <span class="badge">Vue 3</span>
+          <span class="badge">Element Plus</span>
+          <span class="badge">D1 Database</span>
+        </div>
+      </div>
+    </div>
     <div class="form-wrapper">
       <div class="container">
         <span class="form-title">{{ settingStore.settings.title }}</span>
         <span class="form-desc" v-if="show === 'login'">{{ $t('loginTitle') }}</span>
-        <span class="form-desc" v-else>{{ $t('regTitle') }}</span>
         <div v-show="show === 'login'">
           <el-input :class="settingStore.settings.loginDomain === 0 ? 'email-input' : ''" v-model="form.email"
                     type="text" :placeholder="$t('emailAccount')" autocomplete="off">
@@ -98,7 +131,7 @@
         </el-button>
       </div>
     </el-dialog>
-    <a class="github" href="https://github.com/maillab/cloud-mail">
+    <a class="github" href="https://github.com/LiuShen-Fork/LiuShen-TMail" target="_blank" rel="noopener">
       <Icon icon="mingcute:github-line" color="#5dba7d" width="20" height="20" />
     </a>
   </div>
@@ -338,6 +371,111 @@ async function saveToken(token) {
 </style>
 
 <style lang="scss" scoped>
+
+.left-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: calc(100% - 440px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  @media (max-width: 1024px) {
+    width: calc(100% - 400px);
+  }
+  @media (max-width: 767px) {
+    display: none;
+  }
+
+  .left-content {
+    pointer-events: auto;
+    max-width: 460px;
+    padding: 0 48px;
+    animation: fadeInUp 0.7s ease both;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .brand-name {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin: 0;
+    background: linear-gradient(135deg, #3a9a5b, #5dba7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: 15px;
+    color: var(--secondary-text-color);
+    margin: 0 0 20px 0;
+    letter-spacing: 0.5px;
+  }
+
+  .description {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--regular-text-color);
+    margin: 0 0 28px 0;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--el-text-color-primary);
+    svg, .iconify {
+      color: var(--el-color-primary);
+      flex-shrink: 0;
+    }
+  }
+
+  .tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgba(93, 186, 125, 0.10);
+    color: var(--el-color-primary);
+    border: 1px solid rgba(93, 186, 125, 0.18);
+    letter-spacing: 0.2px;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .form-wrapper {
   position: fixed;
