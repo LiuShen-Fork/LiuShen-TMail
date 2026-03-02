@@ -38,10 +38,13 @@ domain = "${DOMAIN}"				#邮件域名可可配置多个 示例: ["example1.com",
 admin = "${ADMIN}"				#管理员的邮箱	示例: admin@example.com
 jwt_secret = "${JWT_SECRET}"			#jwt令牌的密钥,随便填一串字符串
 
-linuxdo_client_id = "${LINUXDO_CLIENT_ID}"
-linuxdo_client_secret = "${LINUXDO_CLIENT_SECRET}"
-linuxdo_callback_url = "${LINUXDO_CALLBACK_URL}"
-linuxdo_switch = "${LINUXDO_SWITCH}"
+casdoor_endpoint = "${CASDOOR_ENDPOINT}"
+casdoor_client_id = "${CASDOOR_CLIENT_ID}"
+casdoor_client_secret = "${CASDOOR_CLIENT_SECRET}"
+casdoor_callback_url = "${CASDOOR_CALLBACK_URL}"
+casdoor_org_name = "${CASDOOR_ORG_NAME}"
+casdoor_app_name = "${CASDOOR_APP_NAME}"
+casdoor_switch = "${CASDOOR_SWITCH}"
 
 [build]
 command = "pnpm --prefix ../mail-vue install && pnpm --prefix ../mail-vue run build"

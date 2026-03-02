@@ -21,6 +21,8 @@ dist
 *.sln
 *.sw?
 
+example/
+
 mail-vue/node_modules
 mail-vue/dist
 .wrangler

@@ -44,8 +44,8 @@
           <el-button class="btn" type="primary" @click="submit" :loading="loginLoading"
           >{{ $t('loginBtn') }}
           </el-button>
-          <el-button class="btn" v-if="settingStore.settings.linuxdoSwitch"  style="margin-top: 10px"  @click="linuxDoLogin">
-            <el-avatar src="/image/linuxdo.webp" :size="18" style="margin-right: 10px" />LinuxDo
+          <el-button class="btn" v-if="settingStore.settings.casdoorSwitch"  style="margin-top: 10px"  @click="casdoorLogin">
+            <Icon icon="mdi:shield-account" width="18" height="18" style="margin-right: 10px" />清羽通行证
           </el-button>
         </div>
         <div v-show="show !== 'login'">
@@ -94,8 +94,8 @@
           <el-button class="btn" style="margin: 0" type="primary" @click="submitRegister" :loading="registerLoading"
           >{{ $t('regBtn') }}
           </el-button>
-          <el-button v-if="settingStore.settings.linuxdoSwitch" class="btn" style="margin-top: 10px"  @click="linuxDoLogin">
-            <el-avatar src="/image/linuxdo.webp" :size="18" style="margin-right: 10px" />LinuxDo
+          <el-button v-if="settingStore.settings.casdoorSwitch" class="btn" style="margin-top: 10px"  @click="casdoorLogin">
+            <Icon icon="mdi:shield-account" width="18" height="18" style="margin-right: 10px" />清羽通行证
           </el-button>
         </div>
         <template v-if="settingStore.settings.register === 0">
@@ -161,7 +161,7 @@ import {cvtR2Url} from "@/utils/convert.js";
 import {loginUserInfo} from "@/request/my.js";
 import {permsToRouter} from "@/perm/perm.js";
 import {useI18n} from "vue-i18n";
-import {oauthBindUser, oauthLinuxDoLogin} from "@/request/ouath.js";
+import {oauthBindUser, oauthCasdoorLogin} from "@/request/ouath.js";
 
 const {t} = useI18n();
 const accountStore = useAccountStore();
@@ -250,16 +250,19 @@ const openSelect = () => {
   mySelect.value.toggleMenu()
 }
 
-function linuxDoLogin() {
-  const clientId = settingStore.settings.linuxdoClientId
-  const redirectUri = encodeURIComponent(settingStore.settings.linuxdoCallbackUrl)
+function casdoorLogin() {
+  const endpoint = settingStore.settings.casdoorEndpoint
+  const clientId = settingStore.settings.casdoorClientId
+  const redirectUri = encodeURIComponent(settingStore.settings.casdoorCallbackUrl)
+  const orgName = settingStore.settings.casdoorOrgName
+  const appName = settingStore.settings.casdoorAppName
   window.location.href =
-      `https://connect.linux.do/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid+profile+email`
+      `${endpoint}/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid+profile+email&state=casdoor`
 }
 
-linuxDoGetUser();
+casdoorGetUser();
 
-async function linuxDoGetUser() {
+async function casdoorGetUser() {
 
   const params = new URLSearchParams(window.location.search)
   const code = params.get('code')
@@ -267,7 +270,7 @@ async function linuxDoGetUser() {
   if (code) {
 
     oauthLoading.value = true
-    oauthLinuxDoLogin(code).then(data => {
+    oauthCasdoorLogin(code).then(data => {
 
       bindForm.oauthUserId = data.userInfo.oauthUserId;
 

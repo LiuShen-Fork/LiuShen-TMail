@@ -30,21 +30,23 @@ const oauthService = {
 		return { userInfo: oauthRow, token: jwtToken}
 	},
 
-	async linuxDoLogin(c, params) {
+	async casdoorLogin(c, params) {
 
 		const { code } = params;
+
+		const endpoint = c.env.casdoor_endpoint;
 
 		let token = '';
 		let userInfo = {}
 
 		const reqParams = new URLSearchParams()
-		reqParams.append('client_id', c.env.linuxdo_client_id)
-		reqParams.append('client_secret', c.env.linuxdo_client_secret)
+		reqParams.append('client_id', c.env.casdoor_client_id)
+		reqParams.append('client_secret', c.env.casdoor_client_secret)
 		reqParams.append('code', code)
-		reqParams.append('redirect_uri', c.env.linuxdo_callback_url)
+		reqParams.append('redirect_uri', c.env.casdoor_callback_url)
 		reqParams.append('grant_type', 'authorization_code')
 
-		const tokenRes = await fetch("https://connect.linux.do/oauth2/token", {
+		const tokenRes = await fetch(`${endpoint}/api/login/oauth/access_token`, {
 			method: "POST",
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			body: reqParams.toString()
@@ -56,7 +58,7 @@ const oauthService = {
 
 		token = await tokenRes.json()
 
-		const userRes = await fetch('https://connect.linux.do/api/user', {
+		const userRes = await fetch(`${endpoint}/api/userinfo`, {
 			headers: {
 				Authorization: 'Bearer ' + token.access_token
 			}
@@ -68,11 +70,13 @@ const oauthService = {
 
 		userInfo = await userRes.json();
 
-		userInfo.oauthUserId = String(userInfo.id);
-		userInfo.active = userInfo.active ? 0 : 1;
-		userInfo.silenced = userInfo.active ? 0 : 1;
-		userInfo.trustLevel = userInfo.trust_level;
-		userInfo.avatar = userInfo.avatar_url;
+		userInfo.oauthUserId = String(userInfo.sub || userInfo.id);
+		userInfo.username = userInfo.preferred_username || userInfo.name;
+		userInfo.name = userInfo.name;
+		userInfo.active = 0;
+		userInfo.silenced = 0;
+		userInfo.trustLevel = 0;
+		userInfo.avatar = userInfo.picture || '';
 
 		const  oauthRow = await this.saveUser(c, userInfo);
 		const userRow = await userService.selectByIdIncludeDel(c, oauthRow.userId);

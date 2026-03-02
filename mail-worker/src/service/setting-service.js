@@ -48,19 +48,22 @@ const settingService = {
 		setting.domainList = domainList;
 
 
-		let linuxdoSwitch = c.env.linuxdo_switch;
+		let casdoorSwitch = c.env.casdoor_switch;
 
-		if (typeof linuxdoSwitch === 'string' && linuxdoSwitch === 'true') {
-			linuxdoSwitch = true
-		} else if (linuxdoSwitch === true) {
-			linuxdoSwitch = true
+		if (typeof casdoorSwitch === 'string' && casdoorSwitch === 'true') {
+			casdoorSwitch = true
+		} else if (casdoorSwitch === true) {
+			casdoorSwitch = true
 		} else {
-			linuxdoSwitch = false
+			casdoorSwitch = false
 		}
 
-		setting.linuxdoClientId = c.env.linuxdo_client_id;
-		setting.linuxdoCallbackUrl = c.env.linuxdo_callback_url;
-		setting.linuxdoSwitch = linuxdoSwitch;
+		setting.casdoorEndpoint = c.env.casdoor_endpoint;
+		setting.casdoorClientId = c.env.casdoor_client_id;
+		setting.casdoorCallbackUrl = c.env.casdoor_callback_url;
+		setting.casdoorOrgName = c.env.casdoor_org_name;
+		setting.casdoorAppName = c.env.casdoor_app_name;
+		setting.casdoorSwitch = casdoorSwitch;
 
 		setting.emailPrefixFilter = setting.emailPrefixFilter.split(",").filter(Boolean);
 
@@ -201,9 +204,12 @@ const settingService = {
 			noticeOffset: settingRow.noticeOffset,
 			notice: settingRow.notice,
 			loginDomain: settingRow.loginDomain,
-			linuxdoClientId: settingRow.linuxdoClientId,
-			linuxdoCallbackUrl: settingRow.linuxdoCallbackUrl,
-			linuxdoSwitch: settingRow.linuxdoSwitch,
+			casdoorEndpoint: settingRow.casdoorEndpoint,
+			casdoorClientId: settingRow.casdoorClientId,
+			casdoorCallbackUrl: settingRow.casdoorCallbackUrl,
+			casdoorOrgName: settingRow.casdoorOrgName,
+			casdoorAppName: settingRow.casdoorAppName,
+			casdoorSwitch: settingRow.casdoorSwitch,
 			minEmailPrefix: settingRow.minEmailPrefix
 		};
 	}
