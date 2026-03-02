@@ -27,7 +27,7 @@ html, body {
 }
 
 body {
-    font-family: -apple-system, Inter, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: GuanKiapTsingKhai, Inter, Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     line-height: 1.5;
     color: var(--el-text-color-primary);
     font-size: 14px;
@@ -106,36 +106,47 @@ button, input, select, textarea {
 }
 
 :root {
-    --el-color-primary: #1890ff;
-    --el-color-primary-dark-2: #1064c0;
-    --el-color-primary-light-3: #4dabff;
-    --el-color-primary-light-5: #69c0ff;
-    --el-color-primary-light-7: #91d5ff;
-    --el-color-primary-light-9: #e6f7ff;
+    /* 主题色：柔和绿 */
+    --el-color-primary: #5dba7d;
+    --el-color-primary-dark-2: #48a066;
+    --el-color-primary-light-3: #7dcb96;
+    --el-color-primary-light-5: #9ed8b0;
+    --el-color-primary-light-7: #beecca;
+    --el-color-primary-light-8: #d3f2dd;
+    --el-color-primary-light-9: #eaf8ee;
 
-    --extra-light-fill: #FAFCFF;
-    --light-ill: #F5F7FA;
-    --light-border: #E4E7ED;
-    --header-actions-border: inset 0 -1px 0 0 var(--el-border-color-lighter);
-    --aside-backgound: #001529;
-    --loadding-background: rgba(255, 255, 255, 0.8);
-    --dark-border: #CDD0D6;
-    --base-fill: #F0F2F5;
-    --regular-text-color: #585d69;
-    --light-border-color: #e7e9ec;
-    --aside-right-border: 3px 0 5px rgba(0, 21, 41, .35);
-    --choose-account-background: var(--el-color-primary-light-8);
+    /* 表面与填充 */
+    --extra-light-fill: #fafcfb;
+    --light-ill: #f4f6f5;
+    --light-border: #e5e8e6;
+    --header-actions-border: inset 0 -1px 0 0 #edeeed;
+    --aside-backgound: #ffffff;
+    --loadding-background: rgba(255, 255, 255, 0.85);
+    --dark-border: #d0d3d1;
+    --base-fill: #f0f2f1;
+    --regular-text-color: #5f6b64;
+    --light-border-color: #e5e8e6;
+    --aside-right-border: 1px 0 4px rgba(0, 0, 0, 0.06);
+    --choose-account-background: #eaf8ee;
     --el-text-color-regular: var(--el-text-color-primary);
-    --email-scroll-content-color: rgba(25, 41, 59, 0.4);
-    --email-hover-background: #F2F6FC;
+    --email-scroll-content-color: rgba(40, 60, 45, 0.38);
+    --email-hover-background: #f4f9f5;
     --login-border: none;
-    --form-desc-color: #71717a;
-    --login-switch-color: #006be6;
-    --scrollbar-track-color: #A8ABB2;
-    --base-border-color: #DCDFE6;
-    --secondary-text-color: #909399;
+    --form-desc-color: #71787a;
+    --login-switch-color: #3a9a5b;
+    --scrollbar-track-color: #b0b5b2;
+    --base-border-color: #dce0dd;
+    --secondary-text-color: #8a918c;
     --message-block-color: rgba(0, 0, 0, 0);
     --loading-hide-transition: all 200ms;
+
+    /* 侧边栏 */
+    --aside-menu-text: #3d4a40;
+    --aside-menu-active-bg: #eaf8ee;
+    --aside-menu-active-text: #3a9a5b;
+    --aside-title-gradient: linear-gradient(135deg, #5dba7d, #3a9a5b);
+
+    /* 视图过渡 */
     --vt-x: 50%;
     --vt-y: 50%;
     --vt-duration: 520ms;
@@ -143,28 +154,33 @@ button, input, select, textarea {
 }
 
 .dark {
-    --extra-light-fill: #191919;
-    --light-ill: #262727;
-    --light-border: #414243;
-    --aside-backgound: #141414;
-    --header-actions-border: inset 0 -1px 0 0 var(--el-border-color-lighter);
-    --loadding-background: rgba(0, 0, 0, 0.3);
-    --dark-border: #636466;
-    --base-fill: #303030;
-    --regular-text-color: #bfbdbc;
-    --light-border-color: #414243;
-    --aside-right-border: 3px 0 5px #0A0A0A;
-    --choose-account-background: #39393A;
-    --email-scroll-content-color: rgba(255, 255, 255, 0.3);
-    --email-hover-background: #1D1E1F;
+    --extra-light-fill: #1a1d1b;
+    --light-ill: #222524;
+    --light-border: #353835;
+    --aside-backgound: #191c1a;
+    --header-actions-border: inset 0 -1px 0 0 #2c2f2d;
+    --loadding-background: rgba(0, 0, 0, 0.4);
+    --dark-border: #4a4d4b;
+    --base-fill: #282b29;
+    --regular-text-color: #b0b8b3;
+    --light-border-color: #353835;
+    --aside-right-border: 1px 0 4px rgba(0, 0, 0, 0.3);
+    --choose-account-background: #253028;
+    --email-scroll-content-color: rgba(255, 255, 255, 0.28);
+    --email-hover-background: #1f2220;
     --login-border: none;
-    --form-desc-color: #8D9095;
-    --login-switch-color: rgb(102, 177, 255);
-    --scrollbar-track-color: #8D9095;
-    --base-border-color: #4C4D4F;
-    --secondary-text-color: #A3A6AD;
-    --message-block-color: rgba(30, 30, 30, 0.2);
-    --el-border-color: #414243 !important;
+    --form-desc-color: #8a918c;
+    --login-switch-color: #7dcb96;
+    --scrollbar-track-color: #5a5d5b;
+    --base-border-color: #3a3d3b;
+    --secondary-text-color: #7a827c;
+    --message-block-color: rgba(20, 20, 20, 0.15);
+    --el-border-color: #353835 !important;
+
+    --aside-menu-text: #c8d0ca;
+    --aside-menu-active-bg: #253028;
+    --aside-menu-active-text: #7dcb96;
+    --aside-title-gradient: linear-gradient(135deg, #5dba7d, #3a9a5b);
 }
 
 .el-input {

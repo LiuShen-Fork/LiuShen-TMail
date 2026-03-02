@@ -228,7 +228,7 @@ function switchDark(nextIsDark, root) {
   root.setAttribute('class', nextIsDark ? 'dark' : '')
   const metaTag = document.getElementById('theme-color-meta');
   const isMobile =  !window.matchMedia("(pointer: fine) and (hover: hover)").matches;
-  metaTag.setAttribute('content', nextIsDark ? (isMobile ? '#141414' : '#000000') : (isMobile ? '#FFFFFF' : '#F1F1F1'));
+  metaTag.setAttribute('content', nextIsDark ? (isMobile ? '#191c1a' : '#1e211f') : (isMobile ? '#FFFFFF' : '#FAFCFB'));
   uiStore.dark = nextIsDark
 }
 
@@ -263,22 +263,22 @@ function formatName(email) {
 <style lang="scss" scoped>
 
 :deep(.el-popper.is-pure) {
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 .user-details {
-  width: 250px;
+  width: 260px;
   font-size: 14px;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
 
   .user-name {
-    font-weight: bold;
-    margin-top: 10px;
+    font-weight: 600;
+    margin-top: 8px;
     padding-left: 20px;
     padding-right: 20px;
-    width: 250px;
+    width: 260px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -286,7 +286,7 @@ function formatName(email) {
   }
 
   .detail-user-type {
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .action-info {
@@ -294,6 +294,7 @@ function formatName(email) {
     display: grid;
     grid-template-columns: auto auto;
     margin-top: 10px;
+    padding: 0 15px;
 
     > div:first-child {
       display: grid;
@@ -316,41 +317,40 @@ function formatName(email) {
   .detail-email {
     padding-left: 20px;
     padding-right: 20px;
-    width: 250px;
+    width: 260px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     text-align: center;
     color: var(--regular-text-color);
     cursor: pointer;
+    font-size: 12.5px;
   }
 
   .logout {
-    margin-top: 20px;
+    margin-top: 16px;
     width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
+    padding: 0 12px 12px;
 
     .el-button {
-      border-radius: 6px;
-      height: 28px;
+      border-radius: 8px;
+      height: 32px;
       width: 100%;
     }
   }
 
   .details-avatar {
-    margin-top: 20px;
-    height: 40px;
-    width: 40px;
-    background: var(--el-bg-color);
-    color: var(--el-text-color-primary);
-    border: 1px solid var(--dark-border);
+    margin-top: 18px;
+    height: 42px;
+    width: 42px;
+    background: var(--el-color-primary-light-9);
+    color: var(--el-color-primary);
     font-size: 18px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 }
 
@@ -378,18 +378,16 @@ function formatName(email) {
   .writer {
     width: 34px;
     height: 34px;
-    border-radius: 50%;
+    border-radius: 10px;
     color: #ffffff;
-    background: linear-gradient(135deg, #1890ff, #3a80dd);
-    transition: all 0.3s ease;
+    background: var(--aside-title-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.15s ease;
 
-    .writer-text {
-      margin-left: 15px;
-      font-size: 14px;
-      font-weight: bold;;
+    &:hover {
+      opacity: 0.88;
     }
   }
 }
@@ -402,7 +400,7 @@ function formatName(email) {
 }
 
 .breadcrumb-item {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 14px;
   color: var(--el-text-color-primary);
   overflow: hidden;
@@ -413,20 +411,21 @@ function formatName(email) {
 .toolbar {
   display: flex;
   justify-content: end;
-  gap: 15px;
+  gap: 12px;
   @media (max-width: 767px) {
-    gap: 10px;
+    gap: 8px;
   }
 
   .icon-item {
     align-self: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background 0.15s ease;
   }
 
   .icon-item:hover {
@@ -434,16 +433,16 @@ function formatName(email) {
   }
 
   .notice {
-    font-size: 22px;
-    margin-right: 4px;
+    font-size: 21px;
+    margin-right: 2px;
   }
 
   .dark-icon {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   .sun-icon {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .avatar {
@@ -452,15 +451,16 @@ function formatName(email) {
     cursor: pointer;
 
     .avatar-text {
-      background: var(--el-bg-color);
-      color: var(--el-text-color-primary);
-      height: 30px;
-      width: 30px;
+      background: var(--el-color-primary-light-9);
+      color: var(--el-color-primary);
+      height: 32px;
+      width: 32px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 8px;
-      border: 1px solid var(--dark-border);
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
     }
 
     .setting-icon {

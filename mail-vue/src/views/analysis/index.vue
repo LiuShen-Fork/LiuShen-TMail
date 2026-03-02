@@ -836,14 +836,14 @@ function createSendGauge() {
         .normal {
           width: fit-content;
           color: var(--el-color-success);
-          font-weight: bold;;
+          font-weight: 600;
           margin-left: 3px;
         }
 
         .deleted {
           width: fit-content;
           color: var(--el-color-danger);
-          font-weight: bold;;
+          font-weight: 600;
           margin-left: 3px;
         }
       }

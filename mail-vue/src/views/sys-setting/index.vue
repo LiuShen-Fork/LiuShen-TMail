@@ -361,7 +361,7 @@
                   <el-button @click="jump('https://github.com/maillab/cloud-mail/releases')">
                     {{ currentVersion }}
                     <template #icon>
-                      <Icon icon="qlementine-icons:version-control-16" style="font-size: 20px" color="#1890FF"/>
+                      <Icon icon="qlementine-icons:version-control-16" style="font-size: 20px" color="#5dba7d"/>
                     </template>
                   </el-button>
                 </el-badge>
@@ -1397,7 +1397,7 @@ function editSetting(settingForm, refreshStatus = true) {
 .background {
   width: 249px;
   height: 140px;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid var(--light-border);
   @media (max-width: 500px) {
     width: 160px;
@@ -1426,7 +1426,7 @@ function editSetting(settingForm, refreshStatus = true) {
 
 .card-title {
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
   padding: 10px 20px;
   border-bottom: 1px solid var(--el-border-color);
 }
@@ -1487,8 +1487,8 @@ function editSetting(settingForm, refreshStatus = true) {
 }
 
 .cropper {
-  border-radius: 4px;
-  border: 1px solid #D4D7DE;
+  border-radius: 8px;
+  border: 1px solid var(--el-border-color);
   height: 397px;
   width: 705px;
   @media (max-width: 767px) {
@@ -1591,7 +1591,7 @@ function editSetting(settingForm, refreshStatus = true) {
       padding-right: 5px;
       position: relative;
       font-size: 16px;
-      font-weight: bold;;
+      font-weight: 600;
     }
   }
 }

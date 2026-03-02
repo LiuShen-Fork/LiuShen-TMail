@@ -99,7 +99,7 @@
       </div>
     </el-dialog>
     <a class="github" href="https://github.com/maillab/cloud-mail">
-      <Icon icon="mingcute:github-line" color="#1890ff" width="20" height="20" />
+      <Icon icon="mingcute:github-line" color="#5dba7d" width="20" height="20" />
     </a>
   </div>
 </template>
@@ -354,74 +354,91 @@ async function saveToken(token) {
 
 .container {
   background: v-bind(loginOpacity);
-  padding-left: 40px;
-  padding-right: 40px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0 44px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 450px;
+  width: 440px;
   height: 100%;
-  border-left: 1px solid var(--login-border);
-  box-shadow: var(--el-box-shadow-light);
+  border-left: 1px solid var(--light-border-color);
   @media (max-width: 1024px) {
-    padding: 20px 18px;
-    width: 384px;
+    padding: 24px 22px;
+    width: 380px;
     margin-left: 18px;
   }
   @media (max-width: 767px) {
-    border: 1px solid var(--login-border);
-    padding: 20px 18px;
-    border-radius: 6px;
+    padding: 28px 24px;
+    border-radius: 16px;
+    border: 1px solid var(--light-border-color);
     height: fit-content;
     width: 100%;
     margin-right: 18px;
     margin-left: 18px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   }
 
   .btn {
-    height: 36px;
+    height: 40px;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 14px;
   }
 
   .form-desc {
-    margin-top: 5px;
-    margin-bottom: 18px;
+    margin-top: 4px;
+    margin-bottom: 22px;
     color: var(--form-desc-color);
+    font-size: 13.5px;
   }
 
   .form-title {
-    font-weight: bold;
-    font-size: 22px !important;
+    font-weight: 700;
+    font-size: 23px !important;
+    letter-spacing: 0.3px;
   }
 
   .switch {
-    margin-top: 20px;
+    margin-top: 22px;
     text-align: center;
+    font-size: 13px;
 
     span {
       color: var(--login-switch-color);
       cursor: pointer;
+      font-weight: 500;
     }
   }
 
   :deep(.el-input__wrapper) {
-    border-radius: 6px;
+    border-radius: 10px;
     background: var(--el-bg-color);
+    box-shadow: 0 0 0 1px var(--light-border-color) inset;
+    transition: box-shadow 0.2s ease;
+  }
+
+  :deep(.el-input__wrapper:hover) {
+    box-shadow: 0 0 0 1px var(--el-color-primary-light-5) inset;
+  }
+
+  :deep(.el-input__wrapper.is-focus) {
+    box-shadow: 0 0 0 1px var(--el-color-primary) inset;
   }
 
   .email-input :deep(.el-input__wrapper) {
-    border-radius: 6px 0 0 6px;
+    border-radius: 10px 0 0 10px;
     background: var(--el-bg-color);
   }
 
   .el-input {
-    height: 38px;
+    height: 40px;
     width: 100%;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 
     :deep(.el-input__inner) {
-      height: 36px;
+      height: 38px;
     }
   }
 }
@@ -432,6 +449,7 @@ async function saveToken(token) {
 
 :deep(.bind-dialog) {
   width: 400px !important;
+  border-radius: 14px !important;
   @media (max-width: 440px) {
     width: calc(100% - 40px) !important;
     margin-right: 20px !important;
@@ -442,7 +460,7 @@ async function saveToken(token) {
 .bind-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 15px;
+  gap: 14px;
 }
 
 .setting-icon {
@@ -452,19 +470,23 @@ async function saveToken(token) {
 
 .github {
   position: fixed;
-  width: 35px;
-  height: 35px;
+  width: 36px;
+  height: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: 10px;
   background: var(--el-bg-color);
-  bottom: 10px;
-  right: 10px;
+  bottom: 12px;
+  right: 12px;
   z-index: 1000;
-  border: 1px solid var(--el-border-color-light);
-  box-shadow: var(--el-box-shadow-light);
+  border: 1px solid var(--light-border-color);
   cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 :deep(.el-input-group__append) {
@@ -472,7 +494,7 @@ async function saveToken(token) {
   padding-left: 8px !important;
   padding-right: 4px !important;
   background: var(--el-bg-color);
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 10px 10px 0;
 }
 
 :deep(.el-button+.el-button) {
@@ -492,14 +514,15 @@ async function saveToken(token) {
 }
 
 .custom-style .el-segmented {
-  --el-border-radius-base: 6px;
+  --el-border-radius-base: 10px;
   width: 180px;
 }
 
 
 #login-box {
-  background: linear-gradient(to bottom, #2980b9, #6dd5fa, #fff);
-  font: 100% Arial, sans-serif;
+  background: linear-gradient(145deg, #e8f5ec, #d4edda, #f0f9f4, #eaf6f0);
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -508,78 +531,93 @@ async function saveToken(token) {
   grid-template-columns: 1fr;
 }
 
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.dark #login-box {
+  background: linear-gradient(145deg, #1a2e20, #1e2b22, #1a261e);
+}
+
 
 #background-wrap {
   height: 100%;
   z-index: 0;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes animateCloud {
-  0% {
-    margin-left: -500px;
-  }
-
-  100% {
-    margin-left: 100%;
-  }
+/* Floating leaf-like shapes instead of clouds */
+@keyframes floatShape {
+  0% { transform: translateX(-200px) translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  100% { transform: translateX(calc(100vw + 200px)) translateY(-40px) rotate(180deg); opacity: 0; }
 }
 
 .x1 {
-  animation: animateCloud 30s linear infinite;
-  transform: scale(0.65);
+  animation: floatShape 28s ease-in-out infinite;
+  position: absolute;
+  top: 15%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(93, 186, 125, 0.12), transparent 70%);
 }
 
 .x2 {
-  animation: animateCloud 15s linear infinite;
-  transform: scale(0.3);
+  animation: floatShape 20s ease-in-out infinite 3s;
+  position: absolute;
+  top: 40%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(93, 186, 125, 0.1), transparent 70%);
 }
 
 .x3 {
-  animation: animateCloud 25s linear infinite;
-  transform: scale(0.5);
+  animation: floatShape 24s ease-in-out infinite 7s;
+  position: absolute;
+  top: 60%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(58, 154, 91, 0.08), transparent 70%);
 }
 
 .x4 {
-  animation: animateCloud 13s linear infinite;
-  transform: scale(0.4);
+  animation: floatShape 18s ease-in-out infinite 2s;
+  position: absolute;
+  top: 25%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(93, 186, 125, 0.1), transparent 70%);
 }
 
 .x5 {
-  animation: animateCloud 20s linear infinite;
-  transform: scale(0.55);
+  animation: floatShape 22s ease-in-out infinite 5s;
+  position: absolute;
+  top: 75%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(93, 186, 125, 0.09), transparent 70%);
 }
 
 .cloud {
-  background: linear-gradient(to bottom, #fff 5%, #f1f1f1 100%);
-  border-radius: 100px;
-  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
-  height: 120px;
-  width: 350px;
-  position: relative;
+  /* Reusing existing class for soft gradient orbs */
+  background: none;
+  border-radius: 50%;
+  box-shadow: none;
+  height: auto;
+  width: auto;
 }
 
 .cloud:after,
 .cloud:before {
-  content: "";
-  position: absolute;
-  background: #fff;
-  z-index: -1;
-}
-
-.cloud:after {
-  border-radius: 100px;
-  height: 100px;
-  left: 50px;
-  top: -50px;
-  width: 100px;
-}
-
-.cloud:before {
-  border-radius: 200px;
-  height: 180px;
-  width: 180px;
-  right: 50px;
-  top: -90px;
+  content: none;
 }
 
 </style>

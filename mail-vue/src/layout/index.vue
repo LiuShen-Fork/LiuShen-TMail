@@ -56,28 +56,28 @@ onBeforeUnmount(() => {
   height: 100%;
   z-index: 100;
   transform: translateX(-100%);
-  transition: all 100ms ease;
+  transition: transform 150ms ease;
 }
 
 .aside-show {
-  -webkit-box-shadow: var(--aside-right-border);
   box-shadow: var(--aside-right-border);
   transform: translateX(0);
-  transition: all 100ms ease;
+  transition: transform 150ms ease;
   z-index: 101;
+  border-right: 1px solid var(--light-border-color);
   @media (max-width: 1025px) {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 101;
     height: 100%;
-    background: var(--el-bg-color);
+    background: var(--aside-backgound);
   }
 }
 
 .el-aside {
   width: auto;
-  transition: all 100ms ease;
+  transition: all 150ms ease;
 }
 
 .layout {
@@ -102,8 +102,8 @@ onBeforeUnmount(() => {
 
 .el-header {
   background: var(--el-bg-color);
-  border-bottom: solid 1px var(--el-border-color);
-  padding: 0 0 0 0;
+  border-bottom: solid 1px var(--light-border-color);
+  padding: 0;
 }
 
 .overlay-show {
@@ -112,9 +112,9 @@ onBeforeUnmount(() => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 99;
-  transition: all 0.3s;
+  transition: all 0.25s;
 }
 
 .overlay-hide {

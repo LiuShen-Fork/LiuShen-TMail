@@ -111,20 +111,20 @@ const handleResize = () => {
     height: 100%;
     width: 100%;
     background: #000000;
-    opacity: 0.6;
+    opacity: 0.3;
     z-index: 10;
-    transition: all 300ms;
+    transition: all 250ms;
   }
 }
 
 .block-hide {
   position: fixed;
   pointer-events: none;
-  transition: all 300ms;
+  transition: all 250ms;
 }
 
 .show {
-  transition: all 100ms;
+  transition: all 150ms;
   @media (max-width: 767px) {
     position: fixed;
     z-index: 100;
@@ -133,7 +133,7 @@ const handleResize = () => {
 }
 
 .hide {
-  transition: all 100ms;
+  transition: all 150ms;
   position: fixed;
   transform: translateX(-100%);
   opacity: 0;
@@ -167,7 +167,7 @@ const handleResize = () => {
 
 .navigation {
   height: 30px;
-  border-bottom: solid 1px var(--el-menu-border-color);
+  border-bottom: solid 1px var(--light-border-color);
   display: inline-flex;
   justify-items: center;
   align-items: center;

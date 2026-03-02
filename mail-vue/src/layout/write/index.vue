@@ -610,6 +610,7 @@ function close() {
 }
 .write-select .el-select-dropdown__item {
   padding: 0 10px 0 10px;
+  border-radius: 6px;
 }
 
 .write-select .el-select-dropdown {
@@ -631,10 +632,10 @@ function close() {
     background: var(--el-bg-color);
     width: min(1367px, calc(100% - 80px));
     box-shadow: var(--el-box-shadow-light);
-    border: 1px solid var(--el-border-color-light);
+    border: 1px solid var(--light-border-color);
     transition: var(--el-transition-duration);
-    padding: 15px;
-    border-radius: 8px;
+    padding: 16px;
+    border-radius: 14px;
     display: grid;
     grid-template-rows: auto 1fr;
     overflow: hidden;
@@ -653,7 +654,7 @@ function close() {
     .title {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
 
       .title-left {
         align-items: center;
@@ -662,6 +663,7 @@ function close() {
       }
 
       .title-text {
+        font-weight: 600;
       }
 
       .sender {
@@ -670,11 +672,11 @@ function close() {
 
       .sender-name {
         margin-left: 8px;
-        font-weight: bold;
+        font-weight: 600;
       }
 
       .send-email {
-        color: #999896;
+        color: var(--secondary-text-color);
         margin-left: 5px;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -692,7 +694,7 @@ function close() {
       height: 100%;
       display: grid;
       grid-template-rows: auto auto 1fr auto;
-      gap: 15px;
+      gap: 14px;
 
       .item-title {
       }
@@ -703,16 +705,24 @@ function close() {
 
         .att-add {
           cursor: pointer;
+          transition: color 0.18s;
+          &:hover {
+            color: var(--el-color-primary);
+          }
         }
 
         .att-clear {
           cursor: pointer;
           margin-left: 10px;
+          transition: color 0.18s;
+          &:hover {
+            color: var(--el-color-primary);
+          }
         }
 
         .att-list {
           display: grid;
-          gap: 5px;
+          gap: 6px;
           grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
           padding-left: 10px;
           padding-right: 10px;
@@ -728,9 +738,13 @@ function close() {
             gap: 5px;
             height: 32px;
             font-size: 14px;
-            padding: 4px 5px;
+            padding: 4px 8px;
             background: var(--light-ill);
-            border-radius: 4px;
+            border-radius: 8px;
+            transition: box-shadow 0.18s;
+            &:hover {
+              box-shadow: 0 1px 4px rgba(93, 186, 125, 0.10);
+            }
             .att-filename {
               white-space: nowrap;
               text-overflow: ellipsis;
@@ -752,6 +766,7 @@ function close() {
 
 :deep(.el-dialog) {
   width: 420px !important;
+  border-radius: 14px !important;
   @media (max-width: 460px) {
     width: calc(100% - 40px) !important;
     margin-right: 20px !important;
@@ -784,5 +799,9 @@ function close() {
 
 .icon {
   cursor: pointer;
+  transition: color 0.18s;
+  &:hover {
+    color: var(--el-color-primary);
+  }
 }
 </style>

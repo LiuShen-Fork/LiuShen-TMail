@@ -5,7 +5,7 @@
         <Icon icon="mdi:email-outline" width="24" height="24" />
         <div>{{settingStore.settings.title}}</div>
       </div>
-      <el-menu :collapse="false" text-color="#fff" active-text-color="#fff" style="margin-top: 10px">
+      <el-menu :collapse="false" style="margin-top: 6px">
         <el-menu-item @click="router.push({name: 'email'})" index="email"
                       :class="route.meta.name === 'email' ? 'choose-item' : ''">
           <Icon icon="hugeicons:mailbox-01" width="20" height="20" />
@@ -83,66 +83,67 @@ const route = useRoute();
 <style lang="scss" scoped>
 
 .title {
-  margin: 15px 10px;
-  height: 45px;
-  border-radius: 6px;
+  margin: 16px 14px 4px;
+  height: 44px;
+  border-radius: 10px;
   display: flex;
   position: relative;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 7px;
   color: #ffffff;
-  background: linear-gradient(135deg, #1890ff, #3a80dd);
-  transition: all 0.3s ease;
-  max-width: 240px;
-  padding: 0 10px;
+  background: var(--aside-title-gradient);
+  max-width: 232px;
+  padding: 0 12px;
   > div {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: calc(240px - 20px - 30px);
+    max-width: calc(232px - 24px - 30px);
   }
 
   :deep(.el-icon) {
     flex-shrink: 0;
     font-size: 20px;
   }
-
-  .user-right-icon {
-    align-self: center;
-    position: absolute;
-    font-size: 12px;
-    right: 8px;
-    color: #ffffff;
-  }
-
 }
 
 
 .manage-title {
-  margin-top: 10px;
-  padding-left: 20px;
-  color: #fff;
+  margin-top: 14px;
+  padding-left: 22px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--secondary-text-color);
 }
 
 .el-menu-item {
-  margin: 5px 10px !important;
-  border-radius: 6px;
-  height: 36px;
-  padding: 10px !important;
+  margin: 2px 10px !important;
+  border-radius: 8px;
+  height: 38px;
+  padding: 0 12px !important;
+  color: var(--aside-menu-text) !important;
+  font-size: 13.5px;
+  transition: all 0.15s ease;
 }
 
 .choose-item {
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(4px);
+  font-weight: 600;
+  color: var(--aside-menu-active-text) !important;
+  background: var(--aside-menu-active-bg) !important;
 }
 
 @media (hover: hover) {
   .el-menu-item:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: var(--base-fill) !important;
+  }
+  .choose-item:hover {
+    background: var(--aside-menu-active-bg) !important;
   }
 }
 
@@ -151,26 +152,26 @@ const route = useRoute();
 }
 
 
-:deep(.el-scrollbar__wrap--hidden-default ) {
+:deep(.el-scrollbar__wrap--hidden-default) {
   background: var(--aside-backgound) !important;
 }
 
 :deep(.el-menu-item) {
-  background: var(--aside-backgound);
+  background: transparent;
 }
 
 :deep(.el-menu) {
-  background: var(--aside-backgound);
+  background: transparent;
 }
 
 .el-menu {
   border-right: 0;
-  width: 260px;
+  width: 250px;
 }
 
 :deep(.el-divider__text) {
   background: var(--aside-backgound);
-  color: #FFFFFF;
+  color: var(--secondary-text-color);
 }
 
 .scroll {

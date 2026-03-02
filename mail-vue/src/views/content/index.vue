@@ -221,10 +221,10 @@ const handleDelete = () => {
 }
 
 .header-actions {
-  padding: 9px 15px;
+  padding: 10px 18px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   box-shadow: var(--header-actions-border);
   font-size: 18px;
   .star {
@@ -235,29 +235,33 @@ const handleDelete = () => {
   }
   .icon {
     cursor: pointer;
+    border-radius: 8px;
+    padding: 4px;
+    transition: background 0.18s, color 0.18s;
+    &:hover {
+      background: var(--el-color-primary-light-9);
+      color: var(--el-color-primary);
+    }
   }
 }
 
-
 .scrollbar {
-  height: calc(100% - 38px);
+  height: calc(100% - 42px);
   width: 100%;
 }
 
 .container {
   font-size: 14px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
+  padding: 14px 24px 0;
   @media (max-width: 1023px) {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 12px 16px 0;
   }
 
   .email-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.15px;
   }
 
   .htm-scrollbar {
@@ -268,26 +272,31 @@ const handleDelete = () => {
     flex-direction: column;
 
     .att {
-      margin-top: 30px;
-      margin-bottom: 30px;
+      margin-top: 28px;
+      margin-bottom: 28px;
       border: 1px solid var(--light-border-color);
-      padding: 14px;
-      border-radius: 6px;
+      padding: 16px;
+      border-radius: 12px;
       width: fit-content;
+      background: var(--light-ill);
       .att-box {
         min-width: min(410px,calc(100vw - 60px));
         max-width: 600px;
         display: grid;
-        gap: 12px;
+        gap: 10px;
         grid-template-rows: 1fr;
       }
 
       .att-title {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         display: flex;
         justify-content: space-between;
         span:first-child {
-          font-weight: bold;
+          font-weight: 600;
+        }
+        span:last-child {
+          color: var(--secondary-text-color);
+          font-size: 13px;
         }
       }
 
@@ -296,27 +305,33 @@ const handleDelete = () => {
         div {
           align-self: center;
         }
-        background: var(--light-ill);
-        padding: 5px 7px;
-        border-radius: 4px;
+        background: var(--el-bg-color);
+        padding: 8px 10px;
+        border-radius: 10px;
         align-self: start;
         display: grid;
         grid-template-columns: auto 1fr auto auto;
+        transition: box-shadow 0.18s, background 0.18s;
+        &:hover {
+          box-shadow: 0 2px 8px rgba(93, 186, 125, 0.10);
+        }
         .att-icon {
           display: grid;
         }
 
         .att-size {
           color: var(--secondary-text-color);
+          font-size: 13px;
         }
 
         .att-name {
-          margin-left: 8px;
-          margin-right: 8px;
+          margin-left: 10px;
+          margin-right: 10px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
           word-break: break-all;
+          font-weight: 500;
         }
 
         .att-image {
@@ -336,28 +351,33 @@ const handleDelete = () => {
             color: var(--secondary-text-color);
             align-items: center;
             display: flex;
+            transition: color 0.18s;
+            &:hover {
+              color: var(--el-color-primary);
+            }
           }
         }
       }
     }
 
     .email-info {
-
       border-bottom: 1px solid var(--light-border-color);
-      margin-bottom: 20px;
-      padding-bottom: 8px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
       @media (max-width: 1024px) {
-        margin-bottom: 15px;
+        margin-bottom: 14px;
       }
       .date {
         color: var(--regular-text-color);
         margin-bottom: 6px;
+        font-size: 13px;
       }
 
       .email-msg {
         max-width: 400px;
         width: fit-content;
-        margin-bottom: 15px;
+        margin-bottom: 14px;
+        border-radius: 8px;
       }
 
       .send {
@@ -372,6 +392,8 @@ const handleDelete = () => {
 
         .send-name-title {
           padding-right: 5px;
+          font-weight: 500;
+          color: var(--el-text-color-primary);
         }
       }
 
@@ -389,14 +411,16 @@ const handleDelete = () => {
 
       .send-source {
         white-space: nowrap;
-        font-weight: bold;
+        font-weight: 600;
         padding-right: 10px;
+        font-size: 13px;
       }
 
       .source {
         white-space: nowrap;
-        font-weight: bold;
+        font-weight: 600;
         padding-right: 10px;
+        font-size: 13px;
       }
     }
   }
@@ -409,8 +433,8 @@ const handleDelete = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--message-block-color); /* 半透明黑色蒙层 */
-  pointer-events: none; /* 不影响点击 */
+  background: var(--message-block-color);
+  pointer-events: none;
 }
 
 .email-text {
@@ -421,8 +445,6 @@ const handleDelete = () => {
 }
 
 .bottom-distance {
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
-
-
 </style>

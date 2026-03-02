@@ -426,7 +426,7 @@ function openAdd() {
             padding-top: 5px;
 
             .code {
-              font-weight: bold;;
+              font-weight: 600;
               font-size: 16px;
               white-space: nowrap;
               overflow: hidden;
@@ -527,7 +527,7 @@ function openAdd() {
 }
 
 .gen-code {
-  color: #606266;
+  color: var(--el-text-color-regular);
   cursor: pointer;
 }
 
@@ -537,7 +537,7 @@ function openAdd() {
   gap: 18px;
   flex-wrap: wrap;
   align-items: center;
-  box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.12);
+  box-shadow: var(--header-actions-border);
   font-size: 18px;
   @media (max-width: 767px) {
     gap: 15px;

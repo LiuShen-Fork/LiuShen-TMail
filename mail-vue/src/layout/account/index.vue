@@ -505,13 +505,13 @@ function submit() {
 </script>
 <style>
 path[fill="#ffdda1"] {
-  fill: #ffdd7d;
+  fill: #b8dfc5;
 }
 </style>
 <style scoped lang="scss">
 .account-box {
 
-  border-right: 1px solid var(--el-border-color) !important;
+  border-right: 1px solid var(--light-border-color) !important;
   background-color: var(--el-bg-color);
   height: 100%;
   overflow: hidden;
@@ -521,11 +521,16 @@ path[fill="#ffdda1"] {
     align-items: center;
     height: 38px;
     box-shadow: var(--header-actions-border);
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
 
     .icon {
       cursor: pointer;
+      color: var(--secondary-text-color);
+      transition: color 0.15s ease;
+      &:hover {
+        color: var(--el-color-primary);
+      }
     }
 
     .refresh {
@@ -534,10 +539,6 @@ path[fill="#ffdda1"] {
 
     .add {
       margin-left: 2px;
-    }
-
-    .head-opt:not(.add) .refresh {
-      margin-left: 5px;
     }
   }
 
@@ -562,26 +563,31 @@ path[fill="#ffdda1"] {
       align-items: center;
       padding: 10px 0;
       color: var(--secondary-text-color);
+      font-size: 12.5px;
     }
   }
 
   .btn {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 14px;
+    border-radius: 8px;
   }
 
   .item {
     background-color: var(--el-bg-color);
-    border-radius: 8px;
-    padding: 12px 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    padding: 12px 12px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
     cursor: pointer;
+    transition: all 0.15s ease;
 
     .account {
       font-weight: 600;
-      margin-bottom: 20px;
+      font-size: 13px;
+      margin-bottom: 16px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -591,7 +597,7 @@ path[fill="#ffdda1"] {
       display: flex;
       justify-content: space-between;
       font-size: 12px;
-      color: #888;
+      color: var(--secondary-text-color);
 
       .settings {
         display: flex;
@@ -611,11 +617,18 @@ path[fill="#ffdda1"] {
   }
 
   .item:first-child {
-    margin-top: 10px;
+    margin-top: 8px;
+  }
+
+  @media (hover: hover) {
+    .item:hover {
+      background: var(--email-hover-background);
+    }
   }
 
   .item-choose {
-    background: var(--choose-account-background);
+    background: var(--choose-account-background) !important;
+    border-color: var(--el-color-primary-light-7);
   }
 }
 
@@ -633,6 +646,7 @@ path[fill="#ffdda1"] {
 
 :deep(.el-dialog) {
   width: 400px !important;
+  border-radius: 14px !important;
   @media (max-width: 440px) {
     width: calc(100% - 40px) !important;
     margin-right: 20px !important;

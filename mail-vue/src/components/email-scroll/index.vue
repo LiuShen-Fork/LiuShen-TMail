@@ -44,7 +44,7 @@
                  v-if="!item.expand"
                  :key="item.emailId"
                  @contextmenu="handleContextmenu($event, item)"
-                 :style="item.rightChecked ? 'background: #FDF6EC' : ''"
+                 :style="item.rightChecked ? 'background: var(--el-color-primary-light-9)' : ''"
             >
               <el-checkbox :class=" props.type === 'all-email' ? 'all-email-checkbox' : 'checkbox'"
                            v-model="item.checked" @click.stop></el-checkbox>
@@ -916,8 +916,9 @@ function loadData() {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 0 0 0;
+    padding: 16px 0 0 0;
     color: var(--secondary-text-color);
+    font-size: 13px;
   }
 
   .follow-loading {
@@ -960,14 +961,13 @@ function loadData() {
   cursor: pointer;
   align-items: center;
   position: relative;
-  transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: background 0.18s ease-in-out, box-shadow 0.18s ease-in-out;
   height: 48px;
   @media (max-width: 1366px) {
     height: 83px;
   }
 
   @media (pointer: coarse) {
-    /* 触屏 */
     user-select: none;
   }
   &.all-email {
@@ -991,7 +991,7 @@ function loadData() {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      transition: all 300ms;
+      transition: all 250ms;
       line-height: 12px;
       max-width: 300px;
       min-width: 0;
@@ -1184,10 +1184,6 @@ function loadData() {
     background-color: var(--email-hover-background);
     z-index: 0;
   }
-
-  /*&[data-checked="true"] {
-    background-color: #c2dbff;
-  }*/
 }
 
 
@@ -1227,8 +1223,8 @@ function loadData() {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 15px;
-  padding: 3px 15px;
+  gap: 14px;
+  padding: 4px 16px;
   box-shadow: var(--header-actions-border);
 
   .header-left {
@@ -1236,10 +1232,10 @@ function loadData() {
     flex-wrap: wrap;
     align-items: center;
     position: relative;
-    column-gap: 20px;
+    column-gap: 16px;
     row-gap: 8px;
     padding-left: 2px;
-    color: var(--el-text-color-primary);;
+    color: var(--el-text-color-primary);
   }
 
   .header-right {
@@ -1247,22 +1243,31 @@ function loadData() {
     grid-template-columns: auto auto;
     align-items: start;
     height: 100%;
-    color: var(--el-text-color-primary);;
+    color: var(--el-text-color-primary);
 
     .email-count {
       white-space: nowrap;
       margin-top: 6px;
+      font-size: 13px;
+      color: var(--secondary-text-color);
     }
   }
 
   .icon {
     font-size: 18px;
     cursor: pointer;
+    border-radius: 6px;
+    padding: 3px;
+    transition: background 0.18s, color 0.18s;
+    &:hover {
+      background: var(--el-color-primary-light-9);
+      color: var(--el-color-primary);
+    }
   }
 
   .more-icon {
     margin-top: 8px;
-    margin-left: 15px;
+    margin-left: 14px;
   }
 }
 
@@ -1280,6 +1285,7 @@ function loadData() {
 .right-dropdown-item {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 :deep(.el-dropdown-menu__item:last-child) {
@@ -1293,6 +1299,9 @@ function loadData() {
 :deep(.el-dropdown-menu__item) {
   padding-right: 14px;
   padding-left: 14px;
+  border-radius: 6px;
+  margin: 0 4px;
+  transition: background 0.15s;
 }
 
 .unread {

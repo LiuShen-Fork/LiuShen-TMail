@@ -181,33 +181,34 @@ function submitPwd() {
 </script>
 <style scoped lang="scss">
 .box {
-  padding: 40px 40px;
+  padding: 40px 44px;
 
   @media (max-width: 767px) {
-    padding: 30px 30px;
+    padding: 28px 20px;
   }
 
   .update-pwd {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
   }
 
   .title {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
   }
 
   .container {
     font-size: 14px;
     display: grid;
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: 18px;
+    margin-bottom: 36px;
 
     .item {
       display: grid;
-      grid-template-columns: 50px 1fr;
-      gap: 140px;
+      grid-template-columns: 55px 1fr;
+      gap: 120px;
       position: relative;
       .user-name {
         display: grid;
@@ -228,17 +229,21 @@ function submitPwd() {
       }
 
       .edit-name {
-        color: #4dabff;
+        color: var(--el-color-primary);
         padding-left: 10px;
         cursor: pointer;
+        font-weight: 500;
+        font-size: 13px;
       }
 
       @media (max-width: 767px) {
-        gap: 70px;
+        gap: 60px;
       }
 
       div:first-child {
-        font-weight: bold;
+        font-weight: 600;
+        color: var(--regular-text-color);
+        font-size: 13px;
       }
 
       div:last-child {
@@ -253,7 +258,7 @@ function submitPwd() {
     font-size: 14px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
   }
 }
 </style>
