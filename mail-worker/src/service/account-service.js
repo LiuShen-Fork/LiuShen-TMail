@@ -50,7 +50,13 @@ const accountService = {
 		let accountRow = await this.selectByEmailIncludeDel(c, email);
 
 		if (accountRow && accountRow.isDel === isDel.DELETE) {
-			throw new BizError(t('isDelAccount'));
+			const userRow = await userService.selectByIdIncludeDel(c, accountRow.userId);
+			if (userRow && userRow.isDel === isDel.DELETE) {
+				await userService.physicsDelete(c, { userIds: String(userRow.userId) });
+				accountRow = null;
+			} else {
+				throw new BizError(t('isDelAccount'));
+			}
 		}
 
 		if (accountRow) {

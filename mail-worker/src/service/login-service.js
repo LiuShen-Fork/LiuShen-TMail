@@ -80,10 +80,16 @@ const loginService = {
 			regKeyId = result?.regKeyId
 		}
 
-		const accountRow = await accountService.selectByEmailIncludeDel(c, email);
+		let accountRow = await accountService.selectByEmailIncludeDel(c, email);
 
 		if (accountRow && accountRow.isDel === isDel.DELETE) {
-			throw new BizError(t('isDelUser'));
+			const userRow = await userService.selectByIdIncludeDel(c, accountRow.userId);
+			if (userRow && userRow.isDel === isDel.DELETE) {
+				await userService.physicsDelete(c, { userIds: String(userRow.userId) });
+				accountRow = null;
+			} else {
+				throw new BizError(t('isDelUser'));
+			}
 		}
 
 		if (accountRow) {
