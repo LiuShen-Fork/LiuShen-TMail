@@ -778,9 +778,16 @@ function createSendGauge() {
 
     .number-item {
       background: var(--el-bg-color);
-      border-radius: 8px;
+      border-radius: 14px;
       border: 1px solid var(--el-border-color);
-      padding: 21px 20px;
+      padding: 22px 24px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+      }
 
       .top {
         display: grid;
@@ -790,11 +797,13 @@ function createSendGauge() {
 
         .left {
           display: grid;
-          gap: 5px;
+          gap: 6px;
           grid-auto-rows: min-content;
 
           > div:first-child {
-            font-size: 15px;
+            font-size: 14px;
+            color: var(--el-text-color-secondary);
+            font-weight: 500;
           }
 
           > div:last-child {
@@ -802,7 +811,8 @@ function createSendGauge() {
           }
 
           :deep(.el-statistic__number) {
-            font-size: 26px;
+            font-size: 28px;
+            font-weight: 700;
           }
         }
 
@@ -815,10 +825,11 @@ function createSendGauge() {
             position: relative;
             display: grid;
             align-items: center;
-            padding: 14px;
-            border-radius: 8px;
-            background: var(--el-color-primary-light-9);
+            padding: 12px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--el-color-primary-light-9), var(--el-color-primary-light-8));
             color: var(--el-color-primary);
+            box-shadow: 0 2px 8px rgba(var(--el-color-primary-rgb), 0.12);
           }
         }
 
@@ -830,8 +841,10 @@ function createSendGauge() {
         grid-template-columns:  auto auto;
         justify-content: start;
         gap: 20px;
-        padding-top: 5px;
-        font-size: 14px;
+        padding-top: 14px;
+        margin-top: 14px;
+        border-top: 1px solid var(--el-border-color-lighter);
+        font-size: 13px;
 
         .normal {
           width: fit-content;
@@ -864,8 +877,15 @@ function createSendGauge() {
 
     .picture-item {
       background: var(--el-bg-color);
-      border-radius: 8px;
+      border-radius: 14px;
       border: 1px solid var(--el-border-color);
+      padding: 4px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+      }
 
       .source-button {
         padding-right: 15px;
@@ -904,8 +924,15 @@ function createSendGauge() {
 
     .picture-cs-item {
       background: var(--el-bg-color);
-      border-radius: 8px;
+      border-radius: 14px;
       border: 1px solid var(--el-border-color);
+      padding: 4px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+      }
 
       .send-count {
         height: 350px;

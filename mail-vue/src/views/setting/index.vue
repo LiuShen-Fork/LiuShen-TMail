@@ -1,10 +1,13 @@
 <template>
   <div class="box">
-    <div class="container">
-      <div class="title">{{$t('profile')}}</div>
+    <div class="setting-card">
+      <div class="card-header">
+        <div class="card-title">{{$t('profile')}}</div>
+        <div class="card-desc">管理你的账号基本信息与登录凭证</div>
+      </div>
       <div class="item">
-        <div>{{$t('username')}}</div>
-        <div>
+        <div class="item-label">{{$t('username')}}</div>
+        <div class="item-value">
           <span v-if="setNameShow" class="edit-name-input">
             <el-input v-model="accountName"  ></el-input>
             <span class="edit-name" @click="setName">
@@ -20,23 +23,31 @@
         </div>
       </div>
       <div class="item">
-        <div>{{$t('emailAccount')}}</div>
-        <div>{{ userStore.user.email }}</div>
+        <div class="item-label">{{$t('emailAccount')}}</div>
+        <div class="item-value">{{ userStore.user.email }}</div>
       </div>
       <div class="item">
-        <div>{{$t('password')}}</div>
-        <div>
-          <el-button type="primary" @click="pwdShow = true">{{$t('changePwdBtn')}}</el-button>
+        <div class="item-label">{{$t('password')}}</div>
+        <div class="item-value">
+          <el-button type="primary" size="small" @click="pwdShow = true">{{$t('changePwdBtn')}}</el-button>
         </div>
       </div>
     </div>
-    <div class="del-email" v-perm="'my:delete'">
-      <div class="title">{{$t('deleteUser')}}</div>
-      <div style="color: var(--regular-text-color);">
-        {{$t('delAccountMsg')}}
+    <div class="danger-card" v-perm="'my:delete'">
+      <div class="card-header">
+        <div class="card-title danger-title">{{$t('deleteUser')}}</div>
+        <div class="card-desc">此操作不可逆，删除后你的所有数据将被清除</div>
+      </div>
+      <div class="danger-body">
+        <div class="danger-icon">
+          <Icon icon="mingcute:warning-line" width="20" height="20" />
+        </div>
+        <div class="danger-text">
+          {{$t('delAccountMsg')}} 删除后无法恢复，请谨慎操作。
+        </div>
       </div>
       <div>
-        <el-button type="primary" @click="deleteConfirm">{{$t('deleteUserBtn')}}</el-button>
+        <el-button type="danger" size="small" @click="deleteConfirm">{{$t('deleteUserBtn')}}</el-button>
       </div>
     </div>
     <el-dialog v-model="pwdShow" :title="$t('changePassword')" width="340">
@@ -56,6 +67,7 @@ import router from "@/router/index.js";
 import {accountSetName} from "@/request/account.js";
 import {useAccountStore} from "@/store/account.js";
 import {useI18n} from "vue-i18n";
+import {Icon} from "@iconify/vue";
 
 const { t } = useI18n()
 const accountStore = useAccountStore()
@@ -182,6 +194,7 @@ function submitPwd() {
 <style scoped lang="scss">
 .box {
   padding: 40px 44px;
+  max-width: 720px;
 
   @media (max-width: 767px) {
     padding: 28px 20px;
@@ -193,26 +206,68 @@ function submitPwd() {
     gap: 14px;
   }
 
-  .title {
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 0.2px;
+  .card-header {
+    margin-bottom: 20px;
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--el-text-color-secondary);
+    }
   }
 
-  .container {
-    font-size: 14px;
-    display: grid;
-    gap: 18px;
-    margin-bottom: 36px;
+  .setting-card {
+    background: var(--el-bg-color);
+    border-radius: 14px;
+    border: 1px solid var(--el-border-color);
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
 
     .item {
-      display: grid;
-      grid-template-columns: 55px 1fr;
-      gap: 120px;
-      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--el-border-color-lighter);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .item-label {
+        font-weight: 600;
+        color: var(--el-text-color-primary);
+        font-size: 14px;
+        flex-shrink: 0;
+        min-width: 60px;
+      }
+
+      .item-value {
+        font-size: 14px;
+        color: var(--el-text-color-regular);
+        text-align: right;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
       .user-name {
-        display: grid;
-        grid-template-columns: auto 1fr;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
         span:first-child {
           overflow: hidden;
           white-space: nowrap;
@@ -221,44 +276,67 @@ function submitPwd() {
       }
 
       .edit-name-input {
-        position: absolute;
-        bottom: -6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
         .el-input {
-          width: min(200px,calc(100vw - 222px));
+          width: min(200px, calc(100vw - 222px));
         }
       }
 
       .edit-name {
         color: var(--el-color-primary);
-        padding-left: 10px;
         cursor: pointer;
         font-weight: 500;
         font-size: 13px;
-      }
+        transition: opacity 0.2s;
 
-      @media (max-width: 767px) {
-        gap: 60px;
-      }
-
-      div:first-child {
-        font-weight: 600;
-        color: var(--regular-text-color);
-        font-size: 13px;
-      }
-
-      div:last-child {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        &:hover {
+          opacity: 0.7;
+        }
       }
     }
   }
 
-  .del-email {
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  .danger-card {
+    background: var(--el-bg-color);
+    border-radius: 14px;
+    border: 1px solid var(--el-border-color);
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .danger-title {
+      color: var(--el-color-danger);
+    }
+
+    .danger-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px 16px;
+      margin: 16px 0 20px 0;
+      background: var(--el-color-danger-light-9);
+      border-radius: 10px;
+      border: 1px solid var(--el-color-danger-light-7);
+
+      .danger-icon {
+        flex-shrink: 0;
+        margin-top: 1px;
+        color: var(--el-color-danger);
+      }
+
+      .danger-text {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--el-text-color-regular);
+      }
+    }
   }
 }
 </style>
