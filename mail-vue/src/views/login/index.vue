@@ -24,10 +24,99 @@
           <span class="quote-text">万物之始，大道至简</span>
           <span class="quote-mark">"</span>
         </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <Icon icon="mingcute:shield-check-line" width="22" height="22" />
+            </div>
+            <div class="feature-title">隐私保护</div>
+            <div class="feature-desc">临时邮箱按需使用，无需绑定真实身份</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <Icon icon="mingcute:rocket-line" width="22" height="22" />
+            </div>
+            <div class="feature-title">全球加速</div>
+            <div class="feature-desc">基于 Cloudflare Workers 边缘节点部署</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <Icon icon="mingcute:mail-send-line" width="22" height="22" />
+            </div>
+            <div class="feature-title">收发一体</div>
+            <div class="feature-desc">支持邮件收发与附件管理，功能完备</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <Icon icon="mingcute:moon-stars-line" width="22" height="22" />
+            </div>
+            <div class="feature-title">深色模式</div>
+            <div class="feature-desc">自适应深浅主题，舒适的阅读体验</div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">无限邮箱</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num">0s</div>
+            <div class="stat-label">即时送达</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">开源免费</div>
+          </div>
+        </div>
+
+        <div class="tech-badges">
+          <span class="badge">Cloudflare Workers</span>
+          <span class="badge">Vue 3</span>
+          <span class="badge">Element Plus</span>
+          <span class="badge">D1 Database</span>
+        </div>
+
+        <div class="info-section">
+          <div class="info-item">
+            <div class="info-icon">
+              <Icon icon="mingcute:information-line" width="16" height="16" />
+            </div>
+            <div class="info-body">
+              <div class="info-title">关于本站</div>
+              <div class="info-desc">清羽飞扬自建临时邮箱服务，可用于临时注册账号、接收验证码、保护个人隐私，避免真实邮箱被泄露和骚扰。</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <Icon icon="mingcute:passport-line" width="16" height="16" />
+            </div>
+            <div class="info-body">
+              <div class="info-title">清羽通行证</div>
+              <div class="info-desc">使用清羽通行证一键注册登录，全站账号打通，一个身份畅行清羽生态下的所有服务。</div>
+            </div>
+          </div>
+          <div class="info-item legal">
+            <div class="info-icon">
+              <Icon icon="mingcute:warning-line" width="14" height="14" />
+            </div>
+            <div class="info-body">
+              <div class="info-desc">请遵守当地法律法规，禁止用于任何违法用途。如收到投诉或发现违规行为，本站有权收回邮箱并配合调查。</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-wrapper">
       <div class="container">
+        <div class="mobile-avatar-wrapper">
+          <div class="avatar-ring"></div>
+          <div class="avatar-ring avatar-ring-delay"></div>
+          <img class="avatar" src="/mail.png" alt="avatar" />
+        </div>
         <span class="form-title">{{ settingStore.settings.title }}</span>
         <span class="form-desc" v-if="show === 'login'">{{ $t('loginTitle') }}</span>
         <div v-show="show === 'login'">
@@ -116,7 +205,7 @@
       </div>
     </el-dialog>
     <a class="github" href="https://github.com/LiuShen-Fork/LiuShen-TMail" target="_blank" rel="noopener">
-      <Icon icon="mingcute:github-line" color="#5dba7d" width="20" height="20" />
+      <Icon icon="mingcute:github-line" color="#3b82f6" width="20" height="20" />
     </a>
   </div>
 </template>
@@ -400,8 +489,8 @@ async function saveToken(token) {
     height: 96px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid rgba(93, 186, 125, 0.3);
-    box-shadow: 0 8px 32px rgba(93, 186, 125, 0.15);
+    border: 3px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
     position: relative;
     z-index: 2;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -409,7 +498,7 @@ async function saveToken(token) {
 
   .avatar:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 40px rgba(93, 186, 125, 0.25);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.25);
   }
 
   .avatar-ring {
@@ -417,7 +506,7 @@ async function saveToken(token) {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 1.5px solid rgba(93, 186, 125, 0.25);
+    border: 1.5px solid rgba(59, 130, 246, 0.25);
     animation: pulseRing 3s ease-out infinite;
     z-index: 1;
   }
@@ -426,7 +515,7 @@ async function saveToken(token) {
     animation-delay: 1.5s;
     width: 136px;
     height: 136px;
-    border-color: rgba(93, 186, 125, 0.12);
+    border-color: rgba(59, 130, 246, 0.12);
   }
 
   .brand-name {
@@ -434,7 +523,7 @@ async function saveToken(token) {
     font-weight: 700;
     letter-spacing: 2px;
     margin: 0 0 6px 0;
-    background: linear-gradient(135deg, #3a9a5b, #5dba7d, #3a9a5b);
+    background: linear-gradient(135deg, #2563eb, #60a5fa, #2563eb);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -487,6 +576,185 @@ async function saveToken(token) {
 
     .quote-text {
       font-weight: 300;
+    }
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    animation: fadeInUp 0.9s ease both;
+    animation-delay: 0.2s;
+  }
+
+  .feature-card {
+    background: rgba(59, 130, 246, 0.04);
+    border: 1px solid rgba(59, 130, 246, 0.08);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(59, 130, 246, 0.08);
+      border-color: rgba(59, 130, 246, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 8px;
+      color: var(--el-color-primary);
+    }
+
+    .feature-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--el-text-color-primary);
+      margin-bottom: 4px;
+    }
+
+    .feature-desc {
+      font-size: 11px;
+      color: var(--el-text-color-secondary);
+      line-height: 1.5;
+    }
+  }
+
+  .stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    animation: fadeInUp 1s ease both;
+    animation-delay: 0.3s;
+  }
+
+  .stat-item {
+    text-align: center;
+
+    .stat-num {
+      font-size: 20px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--el-text-color-secondary);
+      letter-spacing: 1px;
+    }
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 24px;
+    background: linear-gradient(180deg, transparent, var(--el-color-primary-light-7), transparent);
+  }
+
+  .tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    animation: fadeInUp 1.1s ease both;
+    animation-delay: 0.4s;
+  }
+
+  .badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgba(59, 130, 246, 0.08);
+    color: var(--el-color-primary);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(59, 130, 246, 0.14);
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  .info-section {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: fadeInUp 1.2s ease both;
+    animation-delay: 0.5s;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(59, 130, 246, 0.03);
+    border: 1px solid rgba(59, 130, 246, 0.06);
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: rgba(59, 130, 246, 0.06);
+      border-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .info-icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--el-color-primary);
+      opacity: 0.8;
+    }
+
+    .info-body {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .info-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--el-text-color-primary);
+    }
+
+    .info-desc {
+      font-size: 12px;
+      color: var(--el-text-color-secondary);
+      line-height: 1.6;
+    }
+
+    &.legal {
+      background: rgba(245, 158, 11, 0.03);
+      border-color: rgba(245, 158, 11, 0.08);
+
+      .info-icon {
+        color: var(--el-color-warning);
+      }
+
+      .info-desc {
+        color: var(--el-text-color-placeholder);
+        font-size: 11px;
+      }
+
+      &:hover {
+        background: rgba(245, 158, 11, 0.05);
+        border-color: rgba(245, 158, 11, 0.12);
+      }
     }
   }
 }
@@ -563,6 +831,48 @@ async function saveToken(token) {
     margin-right: 18px;
     margin-left: 18px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .mobile-avatar-wrapper {
+    display: none;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px auto;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 767px) {
+      display: flex;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2.5px solid rgba(59, 130, 246, 0.3);
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(59, 130, 246, 0.25);
+      animation: pulseRing 3s ease-out infinite;
+      z-index: 1;
+    }
+
+    .avatar-ring-delay {
+      animation-delay: 1.5s;
+      width: 114px;
+      height: 114px;
+      border-color: rgba(59, 130, 246, 0.12);
+    }
   }
 
   .btn {
@@ -706,7 +1016,7 @@ async function saveToken(token) {
 
 
 #login-box {
-  background: linear-gradient(145deg, #e8f5ec, #d4edda, #f0f9f4, #eaf6f0);
+  background: linear-gradient(145deg, #e8f0f8, #d4e3f5, #f0f6fc, #eaf2f9);
   background-size: 300% 300%;
   animation: gradientShift 12s ease infinite;
   height: 100%;
@@ -723,7 +1033,7 @@ async function saveToken(token) {
 }
 
 .dark #login-box {
-  background: linear-gradient(145deg, #1a2e20, #1e2b22, #1a261e);
+  background: linear-gradient(145deg, #1a2438, #1e2a40, #1a2338);
 }
 
 
@@ -749,7 +1059,7 @@ async function saveToken(token) {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(93, 186, 125, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
 }
 
 .x2 {
@@ -759,7 +1069,7 @@ async function saveToken(token) {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(93, 186, 125, 0.1), transparent 70%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 70%);
 }
 
 .x3 {
@@ -769,7 +1079,7 @@ async function saveToken(token) {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(58, 154, 91, 0.08), transparent 70%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08), transparent 70%);
 }
 
 .x4 {
@@ -779,7 +1089,7 @@ async function saveToken(token) {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(93, 186, 125, 0.1), transparent 70%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 70%);
 }
 
 .x5 {
@@ -789,7 +1099,7 @@ async function saveToken(token) {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(93, 186, 125, 0.09), transparent 70%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.09), transparent 70%);
 }
 
 .cloud {
