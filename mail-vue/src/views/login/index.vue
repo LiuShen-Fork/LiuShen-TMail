@@ -10,35 +10,19 @@
     <div v-else :style="background"></div>
     <div class="left-panel">
       <div class="left-content">
-        <div class="brand">
-          <Icon icon="fluent-emoji:leaf-fluttering-in-wind" width="36" height="36" />
-          <h1 class="brand-name">LiuShen TMail</h1>
+        <div class="avatar-wrapper">
+          <div class="avatar-ring"></div>
+          <div class="avatar-ring avatar-ring-delay"></div>
+          <img class="avatar" src="/mail.png" alt="avatar" />
         </div>
-        <p class="tagline">清羽飞扬の临时邮箱</p>
-        <p class="description">一个轻量、安全、现代化的临时邮箱服务，基于 Cloudflare Serverless 架构，为你提供便捷的邮件收发体验。</p>
-        <div class="features">
-          <div class="feature-item">
-            <Icon icon="mingcute:shield-check-line" width="20" height="20" />
-            <span>隐私保护，临时邮箱按需使用</span>
-          </div>
-          <div class="feature-item">
-            <Icon icon="mingcute:rocket-line" width="20" height="20" />
-            <span>Serverless 部署，全球边缘加速</span>
-          </div>
-          <div class="feature-item">
-            <Icon icon="mingcute:mail-send-line" width="20" height="20" />
-            <span>支持收发邮件与附件管理</span>
-          </div>
-          <div class="feature-item">
-            <Icon icon="mingcute:moon-stars-line" width="20" height="20" />
-            <span>深色模式，舒适的阅读体验</span>
-          </div>
-        </div>
-        <div class="tech-badges">
-          <span class="badge">Cloudflare Workers</span>
-          <span class="badge">Vue 3</span>
-          <span class="badge">Element Plus</span>
-          <span class="badge">D1 Database</span>
+        <h1 class="brand-name">LiuShen</h1>
+        <p class="tagline">清羽飞扬</p>
+        <div class="divider"></div>
+        <p class="description">轻量 · 安全 · 极简</p>
+        <div class="quote">
+          <span class="quote-mark">"</span>
+          <span class="quote-text">万物之始，大道至简</span>
+          <span class="quote-mark">"</span>
         </div>
       </div>
     </div>
@@ -392,88 +376,152 @@ async function saveToken(token) {
 
   .left-content {
     pointer-events: auto;
-    max-width: 460px;
+    max-width: 380px;
     padding: 0 48px;
-    animation: fadeInUp 0.7s ease both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeInUp 0.8s ease both;
   }
 
-  .brand {
+  .avatar-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 28px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
+    justify-content: center;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(93, 186, 125, 0.3);
+    box-shadow: 0 8px 32px rgba(93, 186, 125, 0.15);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(93, 186, 125, 0.25);
+  }
+
+  .avatar-ring {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(93, 186, 125, 0.25);
+    animation: pulseRing 3s ease-out infinite;
+    z-index: 1;
+  }
+
+  .avatar-ring-delay {
+    animation-delay: 1.5s;
+    width: 136px;
+    height: 136px;
+    border-color: rgba(93, 186, 125, 0.12);
   }
 
   .brand-name {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 700;
-    letter-spacing: -0.3px;
-    margin: 0;
-    background: linear-gradient(135deg, #3a9a5b, #5dba7d);
+    letter-spacing: 2px;
+    margin: 0 0 6px 0;
+    background: linear-gradient(135deg, #3a9a5b, #5dba7d, #3a9a5b);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientText 6s ease infinite;
   }
 
   .tagline {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--secondary-text-color);
     margin: 0 0 20px 0;
-    letter-spacing: 0.5px;
+    letter-spacing: 4px;
+    font-weight: 300;
+    opacity: 0.8;
+  }
+
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--el-color-primary-light-3), transparent);
+    margin-bottom: 20px;
+    border-radius: 1px;
   }
 
   .description {
-    font-size: 14.5px;
-    line-height: 1.7;
-    color: var(--regular-text-color);
-    margin: 0 0 28px 0;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--el-text-color-secondary);
+    margin: 0 0 24px 0;
+    font-weight: 400;
+    text-transform: uppercase;
   }
 
-  .features {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 32px;
-  }
-
-  .feature-item {
+  .quote {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 13.5px;
-    color: var(--el-text-color-primary);
-    svg, .iconify {
-      color: var(--el-color-primary);
-      flex-shrink: 0;
+    gap: 6px;
+    font-style: italic;
+    color: var(--el-text-color-placeholder);
+    font-size: 13px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+
+    .quote-mark {
+      font-size: 18px;
+      color: var(--el-color-primary-light-5);
+      font-family: Georgia, serif;
+      line-height: 1;
     }
-  }
 
-  .tech-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .badge {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    background: rgba(93, 186, 125, 0.10);
-    color: var(--el-color-primary);
-    border: 1px solid rgba(93, 186, 125, 0.18);
-    letter-spacing: 0.2px;
+    .quote-text {
+      font-weight: 300;
+    }
   }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes gradientText {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 
