@@ -9,6 +9,9 @@
     </div>
     <div v-else :style="background"></div>
     <div class="left-panel">
+      <div class="bg-decor bg-decor-1"></div>
+      <div class="bg-decor bg-decor-2"></div>
+      <div class="bg-decor bg-decor-3"></div>
       <div class="left-content">
         <div class="avatar-wrapper">
           <div class="avatar-ring"></div>
@@ -453,9 +456,10 @@ async function saveToken(token) {
   width: calc(100% - 440px);
   z-index: 10;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   pointer-events: none;
+  overflow: hidden;
   @media (max-width: 1024px) {
     width: calc(100% - 400px);
   }
@@ -463,15 +467,63 @@ async function saveToken(token) {
     display: none;
   }
 
+  .bg-decor {
+    position: absolute;
+    border-radius: 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bg-decor-1 {
+    width: 320px;
+    height: 320px;
+    top: -80px;
+    right: -60px;
+    background: rgba(59, 130, 246, 0.04);
+    border: 1px solid rgba(59, 130, 246, 0.06);
+    animation: floatDecor 20s ease-in-out infinite;
+  }
+
+  .bg-decor-2 {
+    width: 240px;
+    height: 240px;
+    bottom: 60px;
+    right: 40px;
+    background: rgba(59, 130, 246, 0.03);
+    border: 1px solid rgba(59, 130, 246, 0.05);
+    border-radius: 28px;
+    animation: floatDecor 24s ease-in-out infinite 3s;
+  }
+
+  .bg-decor-3 {
+    width: 180px;
+    height: 180px;
+    top: 45%;
+    right: -40px;
+    background: rgba(96, 165, 250, 0.03);
+    border: 1px solid rgba(96, 165, 250, 0.05);
+    border-radius: 24px;
+    animation: floatDecor 18s ease-in-out infinite 6s;
+  }
+
   .left-content {
     pointer-events: auto;
-    max-width: 380px;
-    padding: 0 48px;
+    max-width: 520px;
+    width: 100%;
+    padding: 40px 60px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     animation: fadeInUp 0.8s ease both;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .avatar-wrapper {
@@ -546,6 +598,7 @@ async function saveToken(token) {
     background: linear-gradient(90deg, transparent, var(--el-color-primary-light-3), transparent);
     margin-bottom: 20px;
     border-radius: 1px;
+    background: linear-gradient(90deg, var(--el-color-primary-light-5), var(--el-color-primary-light-7), transparent);
   }
 
   .description {
@@ -594,8 +647,8 @@ async function saveToken(token) {
     background: rgba(59, 130, 246, 0.04);
     border: 1px solid rgba(59, 130, 246, 0.08);
     border-radius: 12px;
-    padding: 16px 12px;
-    text-align: center;
+    padding: 14px 16px;
+    text-align: left;
     transition: all 0.3s ease;
 
     &:hover {
@@ -606,7 +659,7 @@ async function saveToken(token) {
 
     .feature-icon {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       margin-bottom: 8px;
       color: var(--el-color-primary);
     }
@@ -628,7 +681,7 @@ async function saveToken(token) {
   .stats-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
     margin-bottom: 24px;
     animation: fadeInUp 1s ease both;
@@ -636,7 +689,7 @@ async function saveToken(token) {
   }
 
   .stat-item {
-    text-align: center;
+    text-align: left;
 
     .stat-num {
       font-size: 20px;
@@ -664,7 +717,7 @@ async function saveToken(token) {
   .tech-badges {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 8px;
     animation: fadeInUp 1.1s ease both;
     animation-delay: 0.4s;
@@ -756,6 +809,18 @@ async function saveToken(token) {
         border-color: rgba(245, 158, 11, 0.12);
       }
     }
+  }
+}
+
+@keyframes floatDecor {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(8px) rotate(-1deg);
   }
 }
 
